@@ -1,11 +1,14 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { kv } from '@vercel/kv';
+import { Redis } from '@upstash/redis';
 import { GiftList } from '../route';
+
+// Initialize Redis client
+const redis = Redis.fromEnv();
 
 async function readLists(): Promise<Record<string, GiftList>> {
   try {
-    const lists = await kv.get('gift-lists');
-    return lists as Record<string, GiftList> || {};
+    const lists = await redis.get('gift-lists');
+    return (lists as Record<string, GiftList>) || {};
   } catch (error) {
     console.error('Error reading lists:', error);
     return {};
@@ -14,7 +17,7 @@ async function readLists(): Promise<Record<string, GiftList>> {
 
 async function writeLists(lists: Record<string, GiftList>) {
   try {
-    await kv.set('gift-lists', lists);
+    await redis.set('gift-lists', lists);
   } catch (error) {
     console.error('Error writing lists:', error);
     throw error;
