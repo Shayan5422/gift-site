@@ -1,6 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { promises as fs } from 'fs';
-import path from 'path';
+import { kv } from '@vercel/kv';
 
 export interface GiftItem {
   id: string;
@@ -21,29 +20,23 @@ export interface GiftList {
   createdAt: string;
 }
 
-const DATA_DIR = path.join(process.cwd(), 'data');
-const LISTS_FILE = path.join(DATA_DIR, 'lists.json');
-
-async function ensureDataDir() {
-  try {
-    await fs.access(DATA_DIR);
-  } catch {
-    await fs.mkdir(DATA_DIR, { recursive: true });
-  }
-}
-
 async function readLists(): Promise<Record<string, GiftList>> {
   try {
-    const data = await fs.readFile(LISTS_FILE, 'utf8');
-    return JSON.parse(data);
-  } catch {
+    const lists = await kv.get('gift-lists');
+    return lists as Record<string, GiftList> || {};
+  } catch (error) {
+    console.error('Error reading lists:', error);
     return {};
   }
 }
 
 async function writeLists(lists: Record<string, GiftList>) {
-  await ensureDataDir();
-  await fs.writeFile(LISTS_FILE, JSON.stringify(lists, null, 2));
+  try {
+    await kv.set('gift-lists', lists);
+  } catch (error) {
+    console.error('Error writing lists:', error);
+    throw error;
+  }
 }
 
 export async function POST(request: NextRequest) {
