@@ -1,7 +1,6 @@
 'use client';
 
 import { useState } from "react";
-import Link from "next/link";
 
 export default function Home() {
   const [showCreateForm, setShowCreateForm] = useState(false);
@@ -85,7 +84,7 @@ export default function Home() {
                     id="listName"
                     value={listName}
                     onChange={(e) => setListName(e.target.value)}
-                    placeholder="e.g., Sarah's 25th Birthday Wishlist"
+                    placeholder="e.g., Sarah&apos;s 25th Birthday Wishlist"
                     className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-black focus:border-black text-black"
                   />
                 </div>
@@ -168,7 +167,7 @@ export default function Home() {
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             <div className="bg-white p-6 rounded-md border border-gray-200">
               <h4 className="font-semibold text-black mb-2">No Duplicates</h4>
-              <p className="text-gray-600 text-sm">Friends can see what's already claimed</p>
+              <p className="text-gray-600 text-sm">Friends can see what&apos;s already claimed</p>
             </div>
             <div className="bg-white p-6 rounded-md border border-gray-200">
               <h4 className="font-semibold text-black mb-2">Price Ranges</h4>

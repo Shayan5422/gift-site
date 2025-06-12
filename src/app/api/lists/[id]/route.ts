@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { promises as fs } from 'fs';
 import path from 'path';
-import { GiftList, GiftItem } from '../route';
+import { GiftList } from '../route';
 
 const DATA_DIR = path.join(process.cwd(), 'data');
 const LISTS_FILE = path.join(DATA_DIR, 'lists.json');

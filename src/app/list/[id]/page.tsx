@@ -128,7 +128,7 @@ export default function ViewList() {
         <div className="text-center">
           <div className="text-6xl mb-4">😕</div>
           <h2 className="text-2xl font-bold text-gray-900 mb-2">Gift List Not Found</h2>
-          <p className="text-gray-600 mb-4">This gift list doesn't exist or may have been deleted.</p>
+          <p className="text-gray-600 mb-4">This gift list doesn&apos;t exist or may have been deleted.</p>
           <Link 
             href="/"
             className="bg-purple-600 text-white px-6 py-2 rounded-lg font-semibold hover:bg-purple-700 transition-colors"
@@ -183,7 +183,7 @@ export default function ViewList() {
             </div>
             <div className="bg-gray-50 p-4 rounded-md border border-gray-200">
               <p className="text-gray-700">
-                Help make {list.creator}'s birthday special by choosing a gift they actually want!
+                Help make {list.creator}&apos;s birthday special by choosing a gift they actually want!
               </p>
             </div>
           </div>
@@ -216,7 +216,7 @@ export default function ViewList() {
                </div>
                <h3 className="text-xl font-semibold text-black mb-2">No items yet</h3>
                <p className="text-gray-600">
-                 {list.creator} hasn't added any items to their list yet. Check back soon!
+                 {list.creator} hasn&apos;t added any items to their list yet. Check back soon!
                </p>
              </div>
           ) : (
@@ -268,7 +268,7 @@ export default function ViewList() {
                              onClick={() => handleClaimClick(item)}
                              className="bg-black text-white px-6 py-2 rounded-md font-medium hover:bg-gray-800 transition-colors"
                            >
-                             I'll Buy This
+                             I&apos;ll Buy This
                            </button>
                          )}
                        </div>
@@ -285,7 +285,7 @@ export default function ViewList() {
            <div className="grid md:grid-cols-2 gap-6 text-sm text-gray-600">
              <div>
                <h4 className="font-semibold text-black mb-2">Claim an Item</h4>
-               <p>Click "I'll Buy This" to let others know you're planning to buy that item. This prevents duplicates!</p>
+               <p>Click &quot;I&apos;ll Buy This&quot; to let others know you&apos;re planning to buy that item. This prevents duplicates!</p>
              </div>
              <div>
                <h4 className="font-semibold text-black mb-2">Change Your Mind</h4>
@@ -297,7 +297,7 @@ export default function ViewList() {
              </div>
              <div>
                <h4 className="font-semibold text-black mb-2">Surprise Factor</h4>
-               <p>{list.creator} can see what's claimed but not who claimed what - it's still a surprise!</p>
+               <p>{list.creator} can see what&apos;s claimed but not who claimed what - it&apos;s still a surprise!</p>
              </div>
            </div>
          </div>
@@ -309,7 +309,7 @@ export default function ViewList() {
            <div className="bg-white rounded-lg p-8 max-w-md w-full">
              <h3 className="text-2xl font-bold text-black mb-4">Claim This Gift</h3>
              <p className="text-gray-600 mb-6">
-               You're about to claim "<strong>{selectedItem.name}</strong>". 
+               You&apos;re about to claim &quot;<strong>{selectedItem.name}</strong>&quot;. 
                Other people will see this item as taken. You can choose to claim it anonymously or with your name.
              </p>
              <div className="mb-6">
