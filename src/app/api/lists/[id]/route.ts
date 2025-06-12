@@ -2,8 +2,11 @@ import { NextRequest, NextResponse } from 'next/server';
 import { Redis } from '@upstash/redis';
 import { GiftList } from '../route';
 
-// Initialize Redis client
-const redis = Redis.fromEnv();
+// Initialize Redis client with correct environment variables
+const redis = new Redis({
+  url: process.env.KV_REST_API_URL!,
+  token: process.env.KV_REST_API_TOKEN!,
+});
 
 async function readLists(): Promise<Record<string, GiftList>> {
   try {
